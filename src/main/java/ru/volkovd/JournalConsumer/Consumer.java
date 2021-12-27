@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jms.annotation.JmsListener;
-import ru.volkovd.JournalConsumer.model.Event;
+
 import ru.volkovd.JournalConsumer.repo.EventRepo;
 import ru.volkovd.JournalConsumer.services.EventService;
 
@@ -25,7 +25,7 @@ public class Consumer {
     }
 
     @JmsListener(destination = "journalQueue", containerFactory = "jmsListenerContainerFactoryQueue")
-    public void receiveQueue(Message message) throws JMSException, IOException {
+    public void receiveQueue(Message message) throws JMSException {
         if (message instanceof TextMessage) {
             System.out.println("Получено текстовое сообщение:" + ((TextMessage) message).getText());
         } else if (message instanceof ActiveMQMapMessage) {
