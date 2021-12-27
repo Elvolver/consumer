@@ -5,7 +5,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.util.Date;
 
-@Document(indexName = "events", type = "event")
+@Document(indexName = "events")
 public class Event {
 
     @Id
